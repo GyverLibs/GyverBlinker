@@ -1,0 +1,29 @@
+#######################################
+# Syntax Coloring Map For Blinker
+#######################################
+
+#######################################
+# Datatypes (KEYWORD1)
+#######################################
+Blinker	KEYWORD1
+VirtBlinker	KEYWORD1
+
+#######################################
+# Methods and Functions (KEYWORD2)
+#######################################
+blink	KEYWORD2
+force	KEYWORD2
+stop	KEYWORD2
+state	KEYWORD2
+ready	KEYWORD2
+running	KEYWORD2
+getLeft	KEYWORD2
+getLeft8	KEYWORD2
+tick	KEYWORD2
+
+init	KEYWORD2
+invert	KEYWORD2
+
+#######################################
+# Constants (LITERAL1)
+#######################################
