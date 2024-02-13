@@ -7,6 +7,7 @@
 class Blinker : public VirtBlinker {
    public:
     // using VirtBlinker::blink;
+    // using VirtBlinker::blinkForever;
     // using VirtBlinker::force;
     // using VirtBlinker::state;
     // using VirtBlinker::running;
