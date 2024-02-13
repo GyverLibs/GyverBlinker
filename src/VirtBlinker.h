@@ -1,6 +1,7 @@
 #pragma once
 
 #include <Arduino.h>
+#include <limits.h>
 
 class VirtBlinker {
    public:
@@ -11,6 +12,11 @@ class VirtBlinker {
         _low = low;
         _count = amount;
         _tmr = (uint16_t)((uint16_t)millis() - _low);
+    }
+
+    // мигать бесконечно
+    void blinkForever(uint16_t high, uint16_t low = 0) {
+        blink(INT8_MAX, high, low);
     }
 
     // спровоцировать вызов ready
@@ -54,7 +60,7 @@ class VirtBlinker {
         if (_count >= 0 && (uint16_t)((uint16_t)millis() - _tmr) >= (_state ? _high : _low)) {
             _tmr = millis();
             if (_count > 0) _state = !_state;
-            if (!_state) _count--;
+            if (!_state && _count != INT8_MAX) _count--;
             if (_count >= 0) return 1;
         }
         return 0;

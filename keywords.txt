@@ -12,6 +12,7 @@ VirtBlinker	KEYWORD1
 # Methods and Functions (KEYWORD2)
 #######################################
 blink	KEYWORD2
+blinkForever	KEYWORD2
 force	KEYWORD2
 stop	KEYWORD2
 state	KEYWORD2

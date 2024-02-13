@@ -50,9 +50,12 @@ Blinker();
 Blinker(uint8_t pin);
 
 // начать мигание (количество, период вкл, период выкл)
-void blink(int amount, uint16_t high, uint16_t low = 0);
+void blink(int8_t amount, uint16_t high, uint16_t low = 0);
 
-void force();       // спровоцировать вызов ready
+// мигать бесконечно
+void blinkForever(uint16_t high, uint16_t low = 0);
+
+void force();       // спровоцировать вызов ready (последний блинк)
 void stop();        // остановить мигание. Не спровоцирует вызов ready
 bool state();       // статус выхода
 bool ready();       // однократно вернёт true, когда мигание закончится
@@ -104,6 +107,7 @@ void loop() {
 <a id="versions"></a>
 ## Версии
 - v1.0
+- v1.1.0 - добавлен blinkForever
 
 <a id="feedback"></a>
 ## Баги и обратная связь
