@@ -14,6 +14,7 @@ class Blinker : public VirtBlinker {
     // using VirtBlinker::ready;
     // using VirtBlinker::getLeft;
     // using VirtBlinker::getLeft8;
+    // using VirtBlinker::getCountLeft;
 
     Blinker() {}
 
