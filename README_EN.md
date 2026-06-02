@@ -1,115 +1,129 @@
-This is an automatic translation, may be incorrect in some places. See sources and examples!
+This is an automatic translation and may be incorrect in some places. See the source README and examples for authoritative information.
 
-# Gyverblinker
-Timer with a counter for blinking an LED and other tasks
-- in simple words: the library allows you to flash asynchronously with an LED several times
-- Asynchronous work
-- Installation of the number of operations
-- installation of active and passive time
-- Two tools: Virtblinker without binding to Pina and Blinker indicating the PIN
+[![latest](https://img.shields.io/github/v/release/GyverLibs/GyverBlinker.svg?color=brightgreen)](https://github.com/GyverLibs/GyverBlinker/releases/latest/download/GyverBlinker.zip)
+[![PIO](https://badges.registry.platformio.org/packages/gyverlibs/library/GyverBlinker.svg)](https://registry.platformio.org/libraries/gyverlibs/GyverBlinker)
+[![Foo](https://img.shields.io/badge/Website-AlexGyver.ru-blue.svg?style=flat-square)](https://alexgyver.ru/)
+[![Foo](https://img.shields.io/badge/%E2%82%BD%24%E2%82%AC%20%D0%9F%D0%BE%D0%B4%D0%B4%D0%B5%D1%80%D0%B6%D0%B0%D1%82%D1%8C-%D0%B0%D0%B2%D1%82%D0%BE%D1%80%D0%B0-orange.svg?style=flat-square)](https://alexgyver.ru/support_alex/)
+[![Foo](https://img.shields.io/badge/README-ENGLISH-blueviolet.svg?style=flat-square)](https://github-com.translate.goog/GyverLibs/GyverBlinker?_x_tr_sl=ru&_x_tr_tl=en)  
 
-## compatibility
-All arduino
+[![Foo](https://img.shields.io/badge/ПОДПИСАТЬСЯ-НА%20ОБНОВЛЕНИЯ-brightgreen.svg?style=social&logo=telegram&color=blue)](https://t.me/GyverLibs)
 
-## Content
-- [installation] (# Install)
-- [use] (#usage)
-- [Example] (# Example)
-- [versions] (#varsions)
-- [bugs and feedback] (#fedback)
+# GyverBlinker
+Timer with counter for flashing LED and other tasks
+- In simple words: the library allows you to blink asynchronously LED several times
+- Asynchronous operation
+- Setting the number of positives
+- Establishing active and passive time
+- Two tools: VirtBlinker without pin binding and Blinker with pin indication
 
-<a id="install"> </a>
+### Compatibility
+All Arduino.
+
+## Contents
+- [Installation](#install)
+- [Use of use](#usage)
+- [Example](#example)
+- [Versions](#versions)
+- [Bugs and feedback](#feedback)
+
+<a id="install"></a>
 ## Installation
-- The library can be found by the name ** gyverblinker ** and installed through the library manager in:
-    - Arduino ide
-    - Arduino ide v2
-    - Platformio
-- [download the library] (https://github.com/gyverlibs/gyverblinker/archive/refs/heads/main.zip). Zip archive for manual installation:
-    - unpack and put in * C: \ Program Files (X86) \ Arduino \ Libraries * (Windows X64)
-    - unpack and put in * C: \ Program Files \ Arduino \ Libraries * (Windows X32)
-    - unpack and put in *documents/arduino/libraries/ *
-    - (Arduino id) Automatic installation from. Zip: * sketch/connect the library/add .Zip library ... * and specify downloaded archive
-- Read more detailed instructions for installing libraries [here] (https://alexgyver.ru/arduino-first/#%D0%A3%D1%81%D1%82%D0%B0%BD%D0%BE%BE%BE%BED0%B2%D0%BA%D0%B0_%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA)
+- The library can be found under the name **GyverBlinker** and installed through the library manager in:
+    - Arduino IDE
+    - Arduino IDE v2
+    - PlatformIO
+- [Download the library](https://github.com/GyverLibs/GyverBlinker/archive/refs/heads/main.zip).zip archive for manual installation:
+    - Unpack and put in *C:\Program Files (x86)\Arduino\libraries* (Windows x64)
+    - Unpack and put in *C:\Program Files\Arduino\libraries* (Windows x32)
+    - Unpack and put in *Documents/Arduino/libraries/ *
+    - (Arduino IDE) Automatic installation from .zip: *Sketch/Connect library/Add .ZIP library...* and specify downloaded archive
+- Read more detailed instructions for installing libraries[here](https://alexgyver.ru/arduino-first/#%D0%A3%D1%81%D1%82%D0%B0%D0%BD%D0%BE%D0%B2%D0%BA%D0%B0_%D0%B1%D0%B8%D0%B1%D0%BB%D0%B8%D0%BE%D1%82%D0%B5%D0%BA)
 ### Update
-- I recommend always updating the library: errors and bugs are corrected in the new versions, as well as optimization and new features are added
-- through the IDE library manager: find the library how to install and click "update"
-- Manually: ** remove the folder with the old version **, and then put a new one in its place.“Replacement” cannot be done: sometimes in new versions, files that remain when replacing are deleted and can lead to errors!
+- I recommend always updating the library: new versions fix errors and bugs, as well as optimize and add new features.
+- Through the library manager IDE: find the library as when installing and click "Update"
+- Manually: **Delete the folder with the old version** and then put the new one in its place. “Replacement” can not be done: sometimes new versions delete files that will remain when replaced and can lead to errors!
 
-<a id="usage"> </a>
+<a id="usage"></a>
 
-## Usage
-### Virtblinker
-`` `CPP
-// Designer
-BLINker ();
-Blinker (Uint8_T PIN);
+## Use of use
+### VirtBlinker
+```cpp
+// designer
+Blinker();
+Blinker(uint8_t pin);
 
-// Start flashing (quantity, period of vn, period off)
-VOID BLINK (int amount, uint16_t high, uint16_t low = 0);
+// start blinking (number, period on, period off)
+void blink(int8_t amount, uint16_t high, uint16_t low = 0);
 
-VOID form ();// provoke a call reign
-VOID Stop ();// Stop flashing.Will not provoke a call
-Bool state ();// Exit status
-Bool Ready ();// will return True once when the blinking ends
-Bool Running ();// returns True while the system flashes
-uint16_t getleft ();// get the rest until the next switch to ms
-uint8_t getleft8 ();// get the rest until the next switch in the range 0-255
-Bool Tick ();// ticker, call in LOOP.True will return once when switching the condition
-`` `
+// flashing
+void blinkForever(uint16_t high, uint16_t low = 0);
 
-## bud
-`` `CPP
-VOID Init (Uint8_T PIN);// Indicate the pin
-VOID Invert (Bool Inv);// Invert the output
-// + inherits all functions from Virtblinker
-`` `
+void force();           // Provoke the call ready (last pancake)
+void stop();            // stop blinking. It will not provoke a challenge ready.
+bool state();           // exit
+bool ready();           // It will return true once the blinking is over.
+bool running();         // returns true while the system blinks
+uint16_t getLeft();     // Receive the remainder before the next switch to MS
+uint8_t getLeft8();     // get the remainder until the next switch in the range 0-255
+uint8_t getCountLeft(); // get the number of remaining flashes
 
-<a id="EXAMPLE"> </a>
+bool tick();            // ticker, call the loop. Once return true when switching state
+```
+
+### Blinker
+```cpp
+void init(uint8_t pin); // pin
+void invert(bool inv);  // invert
+// Inherit all functions from VirtBlinker
+```
+
+<a id="example"></a>
 
 ## Example
-## Real
-`` `CPP
-#include <blinker.h>
-Blinker LED (13);
+### Real.
+```cpp
+#include <Blinker.h>
+Blinker led(13);
 
-VOID setup () {
-  // to blink 5 times, 700ms VKL, 400MS off
-  led.blink (5, 700, 400);
+void setup() {
+  // blink 5 times, 700ms on, 400ms off
+  led.blink(5, 700, 400);
 }
-VOID loop () {
-  led.tick ();
+void loop() {
+  led.tick();
 }
-`` `
+```
 
-## virtual
-`` `CPP
-#include <blinker.h>
-Virtblinker Blink;
+### Virtual
+```cpp
+#include <Blinker.h>
+VirtBlinker blink;
 
-VOID setup () {
-  Serial.Begin (115200);
-  // to blink 5 times, 700ms VKL, 400MS off
-  Blink.blink (5, 700, 400);
+void setup() {
+  Serial.begin(115200);
+  // blink 5 times, 700ms on, 400ms off
+  blink.blink(5, 700, 400);
 }
-VOID LOop () {
-  if (blink.tick ()) serial.println (blink.state ());
+void loop() {
+  if (blink.tick()) Serial.println(blink.state());
 }
-`` `
+```
 
-<a id="versions"> </a>
-## versions
-- V1.0
+<a id="versions"></a>
+## Versions
+- v1.0
+- v1.1.0 - added blinkForever
 
-<a id="feedback"> </a>
-## bugs and feedback
-Create ** Issue ** when you find the bugs, and better immediately write to the mail [alex@alexgyver.ru] (mailto: alex@alexgyver.ru)
-The library is open for refinement and your ** pull Request ** 'ow!
+<a id="feedback"></a>
+## Bugs and feedback
+If you find bugs, create **Issue**, or better write to the mail immediately.[alex@alexgyver.ru](mailto:alex@alexgyver.ru)  
+The library is open for revision and your **Pull Requests*!
 
-When reporting about bugs or incorrect work of the library, it is necessary to indicate:
-- The version of the library
-- What is MK used
+When reporting bugs or incorrect work of the library, it is necessary to specify:
+- Library version
+- What is used by the IC
 - SDK version (for ESP)
-- version of Arduino ide
-- whether the built -in examples work correctly, in which the functions and designs are used, leading to a bug in your code
-- what code has been loaded, what work was expected from it and how it works in reality
-- Ideally, attach the minimum code in which the bug is observed.Not a canvas of a thousand lines, but a minimum code
+- Arduino IDE version
+- Are embedded examples that use features and designs that cause bugs in your code working correctly?
+- What code was downloaded, what work was expected from it and how it works in reality
+- Ideally, attach the minimum code in which the bug is observed. Not a canvas of a thousand lines, but a minimum code.
