@@ -51,7 +51,7 @@ Blinker();
 Blinker(uint8_t pin);
 
 // начать мигание (количество, период вкл, период выкл)
-void blink(int8_t amount, uint16_t high, uint16_t low = 0);
+void blink(uint8_t amount, uint16_t high, uint16_t low = 0);
 
 // мигать бесконечно
 void blinkForever(uint16_t high, uint16_t low = 0);
@@ -74,6 +74,10 @@ void init(uint8_t pin); // указать пин
 void invert(bool inv);  // инвертировать выход
 // + наследует все функции из VirtBlinker
 ```
+
+Количество конечных миганий задаётся в диапазоне `0..254`: значение `255`
+зарезервировано для `blinkForever()`. Внутренний таймер 16-битный, поэтому
+`tick()` нужно вызывать хотя бы раз в 65 секунд.
 
 <a id="example"></a>
 

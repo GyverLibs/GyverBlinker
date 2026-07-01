@@ -53,7 +53,7 @@ Blinker();
 Blinker(uint8_t pin);
 
 // start blinking (number, period on, period off)
-void blink(int8_t amount, uint16_t high, uint16_t low = 0);
+void blink(uint8_t amount, uint16_t high, uint16_t low = 0);
 
 // flashing
 void blinkForever(uint16_t high, uint16_t low = 0);
@@ -76,6 +76,10 @@ void init(uint8_t pin); // pin
 void invert(bool inv);  // invert
 // Inherit all functions from VirtBlinker
 ```
+
+The finite blink count range is `0..254`: value `255` is reserved for
+`blinkForever()`. The internal timer is 16-bit, so call `tick()` at least once
+every 65 seconds.
 
 <a id="example"></a>
 

@@ -8,6 +8,7 @@ class VirtBlinker {
     // начать мигание (количество, период вкл, период выкл)
     void blink(uint8_t amount, uint16_t high, uint16_t low = 0) {
         _state = 0;
+        _ready = 0;
         _high = high;
         _low = low;
         _count = amount;
@@ -52,7 +53,10 @@ class VirtBlinker {
 
     // получить остаток до следующего переключения в мс
     uint16_t getLeft() {
-        return _count ? (_getPrd() - _getTime()) : 0;
+        if (!_count) return 0;
+        uint16_t prd = _getPrd();
+        uint16_t time = _getTime();
+        return time < prd ? prd - time : 0;
     }
 
     // получить остаток до следующего переключения в диапазоне 0-255
